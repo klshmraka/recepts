@@ -1,0 +1,617 @@
+﻿<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Зимові торти ✨ Рецепти та гарні свята</title>
+  <style>
+    :root{
+      --bg1:#07182e;
+      --bg2:#0b2b52;
+      --glass: rgba(255,255,255,.10);
+      --glass2: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.18);
+      --gold: #ffd27d;
+      --mint: #8ff0d6;
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background:
+        radial-gradient(1200px 700px at 18% 18%, rgba(140,210,255,.22), transparent 55%),
+        radial-gradient(1000px 700px at 82% 18%, rgba(255,210,125,.16), transparent 55%),
+        radial-gradient(900px 600px at 50% 88%, rgba(143,240,214,.14), transparent 55%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    /* subtle stars */
+    .stars{
+      position:fixed; inset:0;
+      pointer-events:none;
+      background-image:
+        radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,.9), transparent 55%),
+        radial-gradient(1px 1px at 22% 62%, rgba(255,255,255,.6), transparent 55%),
+        radial-gradient(1px 1px at 38% 28%, rgba(255,255,255,.8), transparent 55%),
+        radial-gradient(1px 1px at 44% 72%, rgba(255,255,255,.7), transparent 55%),
+        radial-gradient(1px 1px at 58% 18%, rgba(255,255,255,.6), transparent 55%),
+        radial-gradient(1px 1px at 66% 42%, rgba(255,255,255,.85), transparent 55%),
+        radial-gradient(1px 1px at 78% 26%, rgba(255,255,255,.7), transparent 55%),
+        radial-gradient(1px 1px at 86% 64%, rgba(255,255,255,.7), transparent 55%);
+      opacity:.55;
+      filter: blur(.1px);
+    }
+
+    /* SNOW (pure CSS, 3 layers) */
+    .snow, .snow:before, .snow:after{
+      position:fixed;
+      left:-50%;
+      right:-50%;
+      top:-100%;
+      height:200%;
+      content:"";
+      pointer-events:none;
+      background-repeat: repeat;
+      background-size: 700px 700px;
+      animation: snow 16s linear infinite;
+      opacity:.40;
+      mix-blend-mode: screen;
+      filter: blur(.1px);
+    }
+    .snow{
+      background-image:
+        radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.9), transparent 60%),
+        radial-gradient(2px 2px at 30% 40%, rgba(255,255,255,.8), transparent 60%),
+        radial-gradient(1.6px 1.6px at 50% 10%, rgba(255,255,255,.7), transparent 60%),
+        radial-gradient(2px 2px at 70% 30%, rgba(255,255,255,.85), transparent 60%),
+        radial-gradient(1.6px 1.6px at 90% 55%, rgba(255,255,255,.7), transparent 60%);
+      transform: translateZ(0);
+    }
+    .snow:before{
+      background-size: 550px 550px;
+      animation-duration: 24s;
+      opacity:.28;
+      background-image:
+        radial-gradient(2px 2px at 15% 35%, rgba(255,255,255,.7), transparent 60%),
+        radial-gradient(1.6px 1.6px at 40% 60%, rgba(255,255,255,.75), transparent 60%),
+        radial-gradient(2px 2px at 65% 18%, rgba(255,255,255,.65), transparent 60%),
+        radial-gradient(1.6px 1.6px at 85% 42%, rgba(255,255,255,.7), transparent 60%);
+      filter: blur(.2px);
+    }
+    .snow:after{
+      background-size: 400px 400px;
+      animation-duration: 34s;
+      opacity:.20;
+      background-image:
+        radial-gradient(1.6px 1.6px at 20% 25%, rgba(255,255,255,.65), transparent 60%),
+        radial-gradient(1.6px 1.6px at 55% 55%, rgba(255,255,255,.6), transparent 60%),
+        radial-gradient(2px 2px at 80% 15%, rgba(255,255,255,.6), transparent 60%);
+      filter: blur(.35px);
+    }
+    @keyframes snow{
+      0%{ transform: translate3d(0,-10%,0) }
+      100%{ transform: translate3d(0,60%,0) }
+    }
+
+    /* layout */
+    .wrap{
+      position:relative;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 34px 18px 60px;
+    }
+
+    header{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    .hero{
+      padding: 22px 22px 18px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, var(--glass), rgba(255,255,255,.06));
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .badge .dot{
+      width:10px; height:10px;
+      border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--gold));
+      box-shadow: 0 0 18px rgba(255,210,125,.5);
+    }
+
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 3.5vw, 44px);
+      line-height: 1.08;
+      letter-spacing: .2px;
+    }
+    .sub{
+      margin:0 0 14px;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.55;
+    }
+
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.10);
+      color: var(--text);
+      text-decoration:none;
+      box-shadow: 0 12px 30px rgba(0,0,0,.18);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-2px); background: rgba(255,255,255,.13); border-color: rgba(255,255,255,.30); }
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(255,210,125,.22), rgba(255,255,255,.10));
+      border-color: rgba(255,210,125,.45);
+    }
+    .btn .icon{ opacity:.9 }
+
+    /* Tree card */
+    .treeCard{
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, var(--glass2), rgba(255,255,255,.06));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      display:flex;
+      flex-direction: column;
+      align-items:center;
+      justify-content:center;
+      min-height: 220px;
+      position:relative;
+      overflow:hidden;
+    }
+    .treeGlow{
+      position:absolute;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle at 50% 50%, rgba(143,240,214,.18), transparent 60%);
+      filter: blur(2px);
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* simple SVG tree */
+    .tree{
+      width: 180px;
+      height: 190px;
+      margin-top: 6px;
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,.35));
+    }
+
+    .wish{
+      margin-top: 10px;
+      text-align:center;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height:1.45;
+      max-width: 280px;
+    }
+
+    /* recipes */
+    main{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .sectionTitle{
+      display:flex;
+      align-items:baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 18px 2px 0;
+    }
+    .sectionTitle h2{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+    .sectionTitle p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .card{
+      grid-column: span 6;
+      padding: 16px 16px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      box-shadow: 0 16px 50px rgba(0,0,0,.28);
+      backdrop-filter: blur(10px);
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:-2px -2px auto auto;
+      width: 260px; height: 260px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,210,125,.20), transparent 55%);
+      filter: blur(2px);
+      pointer-events:none;
+    }
+    .card h3{
+      margin: 0 0 6px;
+      font-size: 16.5px;
+      letter-spacing: .15px;
+    }
+    .meta{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+    .pill{
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.08);
+    }
+
+    details{
+      border-top: 1px dashed rgba(255,255,255,.18);
+      padding-top: 10px;
+    }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight: 600;
+      color: rgba(255,255,255,.88);
+      user-select:none;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    summary::-webkit-details-marker{display:none}
+    summary .chev{
+      opacity:.7;
+      transition: transform .18s ease;
+    }
+    details[open] summary .chev{ transform: rotate(180deg); }
+
+    .cols{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
+      color: rgba(255,255,255,.86);
+    }
+    ul{
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(255,255,255,.86);
+      line-height: 1.55;
+      font-size: 13.5px;
+    }
+    .steps li{ margin-bottom: 6px; }
+    .ing li{ margin-bottom: 4px; }
+
+    /* footer */
+    footer{
+      margin-top: 22px;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.08);
+      color: var(--muted);
+      text-align:center;
+      line-height:1.55;
+      box-shadow: 0 14px 45px rgba(0,0,0,.22);
+      backdrop-filter: blur(10px);
+    }
+    footer strong{ color: rgba(255,255,255,.92); }
+
+    /* responsive */
+    @media (max-width: 900px){
+      header{ grid-template-columns: 1fr; }
+      .card{ grid-column: span 12; }
+      .cols{ grid-template-columns: 1fr; }
+      .treeCard{ min-height: 210px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="snow"></div>
+
+  <div class="wrap">
+    <header>
+      <section class="hero">
+        <div class="badge"><span class="dot"></span> Зимова підбірка • рецепти тортів • натхнення</div>
+        <h1>Святкові торти під снігом ✨</h1>
+        <p class="sub">
+          Обери рецепт, відкрий інгредієнти й кроки — і нехай кухня пахне ваніллю, корицею та щастям.
+          А на сторінці — сніжинки і ялинка, щоб настрій був на максимум 🎄
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="#recipes"><span class="icon">🍰</span> Перейти до рецептів</a>
+          <a class="btn" href="#wish"><span class="icon">✨</span> Святкове побажання</a>
+        </div>
+      </section>
+
+      <aside class="treeCard" aria-label="Ялинка">
+        <div class="treeGlow"></div>
+
+        <!-- SVG Christmas Tree -->
+        <svg class="tree" viewBox="0 0 200 220" role="img" aria-label="Святкова ялинка">
+          <!-- star -->
+          <defs>
+            <radialGradient id="starGlow" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+              <stop offset="45%" stop-color="#ffd27d" stop-opacity=".95"/>
+              <stop offset="100%" stop-color="#ffd27d" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="treeGrad" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#8ff0d6" stop-opacity=".22"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity=".08"/>
+            </linearGradient>
+          </defs>
+
+          <circle cx="100" cy="28" r="22" fill="url(#starGlow)"/>
+          <path d="M100 10 l6 14 15 1 -12 9 4 15 -13-8 -13 8 4-15 -12-9 15-1z"
+                fill="#ffd27d" opacity=".98"/>
+
+          <!-- tree layers -->
+          <path d="M100 40
+                   C75 68, 58 78, 42 98
+                   C60 100, 70 100, 82 98
+                   C68 118, 54 132, 40 150
+                   C62 152, 78 150, 92 148
+                   C80 166, 62 182, 48 200
+                   C78 202, 122 202, 152 200
+                   C138 182, 120 166, 108 148
+                   C122 150, 138 152, 160 150
+                   C146 132, 132 118, 118 98
+                   C130 100, 140 100, 158 98
+                   C142 78, 125 68, 100 40Z"
+                fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.20)" stroke-width="2"/>
+
+          <!-- ornaments -->
+          <circle cx="78" cy="102" r="5" fill="#ffd27d" opacity=".95"/>
+          <circle cx="122" cy="108" r="5" fill="#8ff0d6" opacity=".95"/>
+          <circle cx="98" cy="132" r="6" fill="#ffffff" opacity=".85"/>
+          <circle cx="70" cy="158" r="5" fill="#8ff0d6" opacity=".95"/>
+          <circle cx="130" cy="160" r="5" fill="#ffd27d" opacity=".95"/>
+
+          <!-- garland -->
+          <path d="M62 122 C85 138, 115 138, 138 122"
+                fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2" stroke-linecap="round"/>
+          <path d="M56 150 C85 168, 115 168, 144 150"
+                fill="none" stroke="rgba(255,255,255,.30)" stroke-width="2" stroke-linecap="round"/>
+
+          <!-- trunk -->
+          <rect x="88" y="196" width="24" height="18" rx="4"
+                fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.20)" />
+        </svg>
+
+        <div class="wish">
+          Тихого снігу в думках, тепла в серці та солодких моментів у кожному дні ❄️
+        </div>
+      </aside>
+    </header>
+
+    <main id="recipes">
+      <div class="sectionTitle">
+        <h2>Рецепти тортів</h2>
+        <p>Натисни «Деталі», щоб розгорнути інгредієнти та кроки</p>
+      </div>
+
+      <section class="grid">
+        <!-- Card 1 -->
+        <article class="card">
+          <h3>Медовик «Зимова класика»</h3>
+          <div class="meta">
+            <span class="pill">⏱ ~90 хв</span>
+            <span class="pill">🍯 мед + сметана</span>
+            <span class="pill">⭐ ніжний крем</span>
+          </div>
+
+          <details>
+            <summary>Деталі <span class="chev">▾</span></summary>
+            <div class="cols">
+              <div>
+                <strong>Інгредієнти</strong>
+                <ul class="ing">
+                  <li>Мед — 3 ст. л.</li>
+                  <li>Цукор — 150 г</li>
+                  <li>Масло — 80 г</li>
+                  <li>Яйця — 2</li>
+                  <li>Сода — 1 ч. л.</li>
+                  <li>Борошно — ~400 г</li>
+                  <li>Сметана 20% — 700 г</li>
+                  <li>Цукрова пудра — 120 г</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Кроки</strong>
+                <ul class="steps">
+                  <li>На водяній бані розтопи мед + масло + цукор, додай соду.</li>
+                  <li>Вмішай яйця, потім борошно до м’якого тіста.</li>
+                  <li>Розділи на коржі, випікай 4–5 хв при 200°C.</li>
+                  <li>Крем: сметана + пудра, збий до пишності.</li>
+                  <li>Перемасти, посип крихтою, настояти 6–8 год.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card">
+          <h3>Шоколадний торт «Нічне сяйво»</h3>
+          <div class="meta">
+            <span class="pill">⏱ ~75 хв</span>
+            <span class="pill">🍫 какао + ганаш</span>
+            <span class="pill">✨ святковий</span>
+          </div>
+
+          <details>
+            <summary>Деталі <span class="chev">▾</span></summary>
+            <div class="cols">
+              <div>
+                <strong>Інгредієнти</strong>
+                <ul class="ing">
+                  <li>Борошно — 220 г</li>
+                  <li>Какао — 55 г</li>
+                  <li>Цукор — 180 г</li>
+                  <li>Яйця — 2</li>
+                  <li>Кефір/молоко — 250 мл</li>
+                  <li>Олія — 90 мл</li>
+                  <li>Розпушувач — 10 г</li>
+                  <li>Ганаш: шоколад 200 г + вершки 200 мл</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Кроки</strong>
+                <ul class="steps">
+                  <li>Змішай сухі інгредієнти, додай рідкі — до однорідності.</li>
+                  <li>Випікай 30–35 хв при 175°C (форма 20–22 см).</li>
+                  <li>Ганаш: нагрій вершки, залий шоколад, перемішай.</li>
+                  <li>Охолоди корж, розріж, перемасти ганашем.</li>
+                  <li>Зверху — «патьоки», горіхи або ягоди.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card">
+          <h3>Чізкейк «Сніжна ваніль» (без випічки)</h3>
+          <div class="meta">
+            <span class="pill">⏱ ~25 хв + охол.</span>
+            <span class="pill">🧀 крем-сир</span>
+            <span class="pill">❄️ ніжний</span>
+          </div>
+
+          <details>
+            <summary>Деталі <span class="chev">▾</span></summary>
+            <div class="cols">
+              <div>
+                <strong>Інгредієнти</strong>
+                <ul class="ing">
+                  <li>Печиво — 250 г</li>
+                  <li>Масло — 90 г</li>
+                  <li>Крем-сир — 500 г</li>
+                  <li>Вершки 30% — 250 мл</li>
+                  <li>Пудра — 100 г</li>
+                  <li>Ваніль — за смаком</li>
+                  <li>Желатин — 10 г (або загущувач)</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Кроки</strong>
+                <ul class="steps">
+                  <li>Основа: печиво подрібни, змішай з маслом, утрамбуй.</li>
+                  <li>Желатин набрякни та розчини.</li>
+                  <li>Крем-сир + пудра + ваніль — перемішай, додай желатин.</li>
+                  <li>Збий вершки та акуратно введи в масу.</li>
+                  <li>Охолоди 6 год. Декор: білий шоколад/ягоди.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="card">
+          <h3>Морквяний торт «Тепло спецій»</h3>
+          <div class="meta">
+            <span class="pill">⏱ ~70 хв</span>
+            <span class="pill">🥕 кориця + горіх</span>
+            <span class="pill">🌿 ароматний</span>
+          </div>
+
+          <details>
+            <summary>Деталі <span class="chev">▾</span></summary>
+            <div class="cols">
+              <div>
+                <strong>Інгредієнти</strong>
+                <ul class="ing">
+                  <li>Морква терта — 250 г</li>
+                  <li>Яйця — 3</li>
+                  <li>Цукор — 170 г</li>
+                  <li>Олія — 120 мл</li>
+                  <li>Борошно — 240 г</li>
+                  <li>Розпушувач — 10 г</li>
+                  <li>Кориця — 1 ч. л., щіпка мускату</li>
+                  <li>Горіхи — 80 г</li>
+                  <li>Крем: крем-сир 350 г + масло 60 г + пудра 80 г</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Кроки</strong>
+                <ul class="steps">
+                  <li>Яйця збий з цукром, додай олію.</li>
+                  <li>Вмішай борошно + спеції + розпушувач.</li>
+                  <li>Додай моркву й горіхи, перемішай.</li>
+                  <li>Випікай 35–40 хв при 175°C.</li>
+                  <li>Крем збий, перемасти коржі, зверху — горіхи/цедра.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </article>
+      </section>
+
+      <footer id="wish">
+        <div style="font-size:15px">
+          <strong>Гарних свят! 🎄✨</strong><br/>
+          Нехай у домі буде тепло, у серці — спокій, а в житті — багато світла.
+          Бажаю натхнення, щирих людей поруч і солодких моментів щодня ❄️🍰
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
